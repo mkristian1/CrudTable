@@ -11,11 +11,21 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_ITEM':
             const newItem = action.payload;
+
             return {
                 ...state,
                 cars: [...state?.cars, { id: state?.cars.length + 1, ...newItem }]
-
             }
+            
+        case 'DELETE_ITEM':
+            const id = action.payload;
+            const res = state?.cars.filter(car => car.id !== id);
+
+            return {
+                ...state,
+                cars: [...res]
+            }
+
         default:
             return state;
     }
