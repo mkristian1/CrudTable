@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { deleteItemAction } from "../Redux/actions";
 import TableView from "../Views/TableView";
 
 const TableComponent = () => {
@@ -6,7 +7,7 @@ const TableComponent = () => {
     const dispatch = useDispatch();
 
     const deleteItem = (id) => {
-        dispatch({ type: 'DELETE_ITEM', payload: id })
+        dispatch(deleteItemAction(id));
     }
 
     return (
