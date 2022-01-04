@@ -1,0 +1,90 @@
+@import "../../../Styles/variables/index.scss";
+
+.default {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $first;
+        border-radius: 10rem;
+        z-index: -2;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($first, 15%);
+        transition: all 0.3s;
+        border-radius: 10rem;
+        z-index: -1;
+    }
+    &:hover {
+        color: $white;
+        &:before {
+            width: 100%;
+        }
+    }
+}
+.danger {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $red;
+        border-radius: 10rem;
+        z-index: -2;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($red, 15%);
+        transition: all 0.3s;
+        border-radius: 10rem;
+        z-index: -1;
+    }
+    &:hover {
+        color: $white;
+        &:before {
+            width: 100%;
+        }
+    }
+}

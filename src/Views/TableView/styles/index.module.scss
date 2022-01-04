@@ -1,0 +1,27 @@
+@import "../../../Styles/variables/index.scss";
+
+.table {
+    box-shadow: $table-shadow;
+    padding: 1rem;
+    width: 50%;
+    table-layout: fixed;
+    text-align: left;
+    margin: 2rem auto;
+}
+
+.tbody {
+    padding-top: 1rem;
+    &__td {
+        padding: 0.4rem 0;
+    }
+    &__tr:first-child {
+        .tbody__td {
+            padding-top: 1rem;
+        }
+    }
+    &__tr:not(:last-child) {
+        .tbody__td {
+            border-bottom: solid 1px $gray;
+        }
+    }
+}
