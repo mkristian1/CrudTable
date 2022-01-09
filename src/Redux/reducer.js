@@ -1,5 +1,7 @@
 import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM } from "./actions";
 
+const storageState = JSON.parse(window.localStorage.getItem('storageState'));
+
 const initialState = {
     cars: [
         { id: 1, brand: 'Bmw', model: '7 series', maxSpeed: 250, speedType: 'km' },
@@ -8,7 +10,7 @@ const initialState = {
     ]
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = storageState || initialState, action) => {
 
     switch (action.type) {
         case ADD_ITEM:

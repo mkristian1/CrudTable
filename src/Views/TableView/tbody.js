@@ -47,6 +47,7 @@ const Tbody = ({ cars, deleteItem, isEditItem, editItem, onEditItem, editItemVal
                                 field={CAR_FIELDS.maxSpeed}
                                 editItemValue={editItemValue}
                                 value={maxSpeed}
+                                type='number'
                             />
                             {speedType}/h
                         </td>
