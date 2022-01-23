@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM } from "./actions";
+import { ADD_ITEM, DELETE_ITEM, DELETE_SELECTED_ITEM, EDIT_ITEM } from "./actions";
 
 const storageState = JSON.parse(window.localStorage.getItem('storageState'));
 
@@ -15,10 +15,11 @@ const reducer = (state = storageState || initialState, action) => {
     switch (action.type) {
         case ADD_ITEM:
             const newItem = action.payload;
+            const newItemId = state?.cars.reduce((acc, item) => { return acc + item.id; }, 1);
 
             return {
                 ...state,
-                cars: [...state?.cars, { id: state?.cars.length + 1, ...newItem }]
+                cars: [...state?.cars, { id: newItemId, ...newItem }]
             }
 
         case DELETE_ITEM:
@@ -39,6 +40,14 @@ const reducer = (state = storageState || initialState, action) => {
                 cars: newEditArr,
             }
 
+        case DELETE_SELECTED_ITEM:
+            const selectedItems = action.payload;
+            const removedArr = state?.cars.filter(({ id }) => !selectedItems.some(item => id === item.id))
+
+            return {
+                ...state,
+                cars: removedArr,
+            }
 
         default:
             return state;

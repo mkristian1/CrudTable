@@ -3,13 +3,16 @@ import Button from '../Button'
 import { CAR_FIELDS } from '../../const';
 import EditableField from './EditableField';
 
-const Tbody = ({ cars, deleteItem, isEditItem, editItem, onEditItem, editItemValue, saveChanges }) => {
+const Tbody = ({ cars, deleteItem, isEditItem, editItem, onEditItem, editItemValue, saveChanges, getSelectedItems }) => {
     return (
         <tbody className={style.tbody}>
             {cars?.map(({ id, brand, model, maxSpeed, speedType }) => {
 
                 return (
                     <tr className={style.tbody__tr} key={id}>
+                        <td className={style.tbody__td}>
+                            <input data-id={id} onChange={getSelectedItems} type="checkbox" />
+                        </td>
                         <td className={style.tbody__td}>
                             <EditableField
                                 id={id}
