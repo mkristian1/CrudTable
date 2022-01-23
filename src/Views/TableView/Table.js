@@ -2,10 +2,10 @@ import style from './styles/index.module.scss';
 import Tbody from './tbody';
 import Thead from './thead';
 
-const Table = ({ cars, deleteItem, editItem, isEditItem, onEditItem, editItemValue, saveChanges }) => {
+const Table = ({ cars, deleteItem, editItem, isEditItem, onEditItem, editItemValue, saveChanges, getSelectedItems, deleteSelectedItems, selectedCount }) => {
     return (
         <table className={style.table}>
-            <Thead />
+            <Thead deleteSelectedItems={deleteSelectedItems} selectedCount={selectedCount} />
             <Tbody
                 cars={cars}
                 deleteItem={deleteItem}
@@ -14,6 +14,7 @@ const Table = ({ cars, deleteItem, editItem, isEditItem, onEditItem, editItemVal
                 onEditItem={onEditItem}
                 editItemValue={editItemValue}
                 saveChanges={saveChanges}
+                getSelectedItems={getSelectedItems}
             />
         </table>
     )

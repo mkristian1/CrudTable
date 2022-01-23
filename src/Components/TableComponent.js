@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItemAction, editItemAction } from "../Redux/actions";
+import { deleteItemAction, deleteSelectedItemAction, editItemAction } from "../Redux/actions";
 import TableView from "../Views/TableView";
 
 const TableComponent = () => {
     const [editItem, setEditItem] = useState();
     const [editItemValue, setEditItemValue] = useState();
+    const [selectedItems, setSelectedItems] = useState([]);
     const cars = useSelector((state) => state?.cars);
     const dispatch = useDispatch();
 
@@ -30,6 +31,21 @@ const TableComponent = () => {
         setEditItem({ id, field })
     }
 
+    const getSelectedItems = (e) => {
+        const itemId = +e.target.dataset.id;
+        const isChecked = e.target.checked;
+        if (isChecked) {
+            setSelectedItems((prevArray) => [...prevArray, { id: itemId, isChecked }])
+        } else {
+            const checkedArr = selectedItems.filter(({ id }) => id !== itemId)
+            setSelectedItems([...checkedArr])
+        }
+    }
+
+    const deleteSelectedItems = () => {
+        dispatch(deleteSelectedItemAction(selectedItems));        
+    }
+
     return (
         <TableView.Table
             cars={cars}
@@ -39,6 +55,9 @@ const TableComponent = () => {
             onEditItem={onEditItem}
             editItemValue={editItemValue}
             saveChanges={saveChanges}
+            getSelectedItems={getSelectedItems}
+            deleteSelectedItems={deleteSelectedItems}
+            selectedCount={selectedItems.length}
         />
     )
 }
