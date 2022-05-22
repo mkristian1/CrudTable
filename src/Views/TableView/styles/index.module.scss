@@ -25,3 +25,22 @@
         }
     }
 }
+
+.item-enter {
+    opacity: 0;
+    transform: translate(-200px);
+}
+.item-enter-active {
+    transition: 0.5s;
+    opacity: 1;
+    transform: translate(0);
+}
+.item-exit {
+    opacity: 0;
+    transition: .2s;
+    transform: translate(-200px);
+}
+// .item-exit-active {
+//     opacity: 0;
+//     transition: opacity 500ms ease-in;
+// }
